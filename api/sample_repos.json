@@ -1,0 +1,50 @@
+[
+  {
+    "name": "quantopian/zipline",
+    "category": "Python · trading tools",
+    "description": "A backtesting library for algorithmic trading.",
+    "url": "https://github.com/quantopian/zipline"
+  },
+  {
+    "name": "lbryio/lbry-desktop",
+    "category": "Desktop · Electron",
+    "description": "The desktop application for the LBRY network.",
+    "url": "https://github.com/lbryio/lbry-desktop"
+  },
+  {
+    "name": "debois/elm-mdl",
+    "category": "Frontend · Elm",
+    "description": "Material Design components for Elm applications.",
+    "url": "https://github.com/debois/elm-mdl"
+  },
+  {
+    "name": "TryKickoff/kickoff",
+    "category": "Web · JavaScript",
+    "description": "A starter kit for building web projects.",
+    "url": "https://github.com/TryKickoff/kickoff"
+  },
+  {
+    "name": "oncebot/pushbar.js",
+    "category": "Frontend · JavaScript",
+    "description": "A small off-canvas panel library for the web.",
+    "url": "https://github.com/oncebot/pushbar.js"
+  },
+  {
+    "name": "Pixabay/jQuery-autoComplete",
+    "category": "Frontend · JavaScript",
+    "description": "An autocomplete plugin for jQuery projects.",
+    "url": "https://github.com/Pixabay/jQuery-autoComplete"
+  },
+  {
+    "name": "expressjs/express",
+    "category": "Web · Node.js",
+    "description": "A minimal web framework for Node.js.",
+    "url": "https://github.com/expressjs/express"
+  },
+  {
+    "name": "psf/requests",
+    "category": "Python · HTTP client",
+    "description": "An HTTP library for Python.",
+    "url": "https://github.com/psf/requests"
+  }
+]

@@ -42,7 +42,7 @@
     form: $("scan-form"),
     target: $("target"),
     chip: $("kind-chip"),
-    scanBtn: $("scan-btn"),
+    scanBtn: $("scan-btn"), sampleDialog: $("sample-dialog"), sampleSearch: $("sample-search"), sampleList: $("sample-list"), openSamples: $("open-samples"),
     howTool: $("how-tool"),
     scanTarget: $("scan-target"),
     scanKind: $("scan-kind"),
@@ -72,7 +72,7 @@
     tabNTrace: $("tab-n-trace")
   };
 
-  var state = {
+  var sampleRepos = null; var sampleLoadFailed = false; var state = {
     screen: "home",
     kind: "",
     target: "",
@@ -229,7 +229,7 @@
     el.scanBtn.disabled = !kind;
   }
 
-  /* ---------- clock ---------- */
+function renderSampleRepos(){if(sampleRepos===null){el.sampleList.replaceChildren(make("p","sample-empty","Loading sample repositories…"));return;}var q=el.sampleSearch.value.trim().toLowerCase();var a=sampleRepos.filter(function(r){return [r.name,r.category,r.description].join(" ").toLowerCase().indexOf(q)!==-1;});el.sampleList.replaceChildren();if(!a.length){el.sampleList.appendChild(make("p","sample-empty",sampleLoadFailed?"Couldn’t load the sample list. You can still paste a GitHub URL above.":"No sample repos match that search."));return;}a.forEach(function(r){var b=make("button","sample-option");b.type="button";b.setAttribute("aria-label","Use "+r.name+", "+r.category);b.appendChild(make("span","sample-option-name",r.name));b.appendChild(make("span","sample-option-category",r.category));b.appendChild(make("span","sample-option-description",r.description));b.addEventListener("click",function(){el.target.value=r.url;syncInput();el.sampleDialog.close();el.target.focus();});el.sampleList.appendChild(b);});} function openSamplePicker(){el.sampleDialog.showModal();el.sampleSearch.value="";renderSampleRepos();el.sampleSearch.focus();if(sampleRepos===null){fetch("/api/sample-repos").then(function(r){if(!r.ok)throw new Error("unavailable");return r.json();}).then(function(r){sampleRepos=Array.isArray(r)?r:[];renderSampleRepos();}).catch(function(){sampleRepos=[];sampleLoadFailed=true;renderSampleRepos();});}} /* ---------- clock ---------- */
 
   function clock(ms) {
     var total = Math.max(0, Math.floor(ms / 1000));
@@ -1081,7 +1081,7 @@
 
   /* ---------- wiring ---------- */
 
-  el.target.addEventListener("input", syncInput);
+el.target.addEventListener("input", syncInput); el.openSamples.addEventListener("click",openSamplePicker); el.sampleSearch.addEventListener("input",renderSampleRepos); el.sampleDialog.addEventListener("click",function(e){if(e.target===el.sampleDialog)el.sampleDialog.close();}); $("close-samples").addEventListener("click",function(){el.sampleDialog.close();});
   el.form.addEventListener("submit", function (event) {
     event.preventDefault();
     startScan(el.target.value);

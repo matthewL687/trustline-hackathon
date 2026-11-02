@@ -72,7 +72,7 @@ def create_app(
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    store = JobStore()
+    store = JobStore(); app.add_api_route("/api/sample-repos", lambda: json.loads((Path(__file__).parent / "sample_repos.json").read_text()), methods=["GET"])
     running: set[asyncio.Task] = set()
     app.state.store = store
     scan_runner = runner or run_scan

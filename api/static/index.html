@@ -52,7 +52,7 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"></path></svg>
             Watch the demo scan
           </button>
-          <span class="hero-demo-name mono">demo/paperplane-shop</span>
+          <span class="hero-demo-name mono">demo/paperplane-shop</span> <button type="button" class="sample-trigger" id="open-samples" aria-haspopup="dialog" aria-controls="sample-dialog">Browse sample repos <span aria-hidden="true">↗</span></button>
         </div>
         <p id="home-error" class="inline-error" role="alert" hidden></p>
       </form>
@@ -266,7 +266,7 @@
   </footer>
 </div>
 
-<!-- ───────────────────── App chrome (02 / 03) ───────────────────── -->
+<dialog id="sample-dialog" class="sample-dialog" aria-labelledby="sample-title"><div class="sample-dialog-head"><div><div class="kicker">Judge demo · repo catalog</div><h2 id="sample-title">Pick a repo to scan</h2></div><button type="button" class="sample-close" id="close-samples" aria-label="Close sample repositories">×</button></div><p class="sample-intro">Choose a public repository from the evaluation set, or paste your own above. Each scan checks current signals.</p><label class="sr-only" for="sample-search">Search repositories or categories</label><input id="sample-search" class="input sample-search" type="search" placeholder="Search by repo or category" autocomplete="off"><div id="sample-list" class="sample-list" aria-live="polite"></div><p class="sample-footnote">Selecting a sample fills the scan field; it won’t start until you press Scan.</p></dialog> <!-- ───────────────────── App chrome (02 / 03) ───────────────────── -->
 <div id="page-app" class="screen-app" hidden>
   <nav class="app-nav">
     <button type="button" class="brand brand-btn" data-home>
